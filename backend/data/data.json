@@ -1,0 +1,132 @@
+[
+  {
+    "cityName": "Lisbon",
+    "country": "Portugal",
+    "emoji": "🇵🇹",
+    "notes": "My favorite city so far!",
+    "position": {
+      "lat": 38.727881642324164,
+      "lng": -9.140900099907554
+    }
+  },
+  {
+    "cityName": "Madrid",
+    "country": "Spain",
+    "emoji": "🇪🇸",
+    "notes": "",
+    "position": {
+      "lat": 40.46635901755316,
+      "lng": -3.7133789062500004
+    }
+  },
+  {
+    "cityName": "Berlin",
+    "country": "Germany",
+    "emoji": "🇩🇪",
+    "notes": "Amazing 😃",
+    "position": {
+      "lat": 52.53586782505711,
+      "lng": 13.376933665713324
+    }
+  },
+  {
+    "cityName": "Tokyo",
+    "country": "Japan",
+    "emoji": "🇯🇵",
+    "notes": "Amazing blend of traditional and modern culture",
+    "position": {
+      "lat": 35.6762,
+      "lng": 139.6503
+    }
+  },
+  {
+    "cityName": "New York",
+    "country": "United States",
+    "emoji": "🇺🇸",
+    "notes": "The city that never sleeps",
+    "position": {
+      "lat": 40.7128,
+      "lng": -74.006
+    }
+  },
+  {
+    "cityName": "Sydney",
+    "country": "Australia",
+    "emoji": "🇦🇺",
+    "notes": "Beautiful harbor city with amazing beaches",
+    "position": {
+      "lat": -33.8688,
+      "lng": 151.2093
+    }
+  },
+  {
+    "cityName": "Cairo",
+    "country": "Egypt",
+    "emoji": "🇪🇬",
+    "notes": "Ancient wonders meet modern life",
+    "position": {
+      "lat": 30.0444,
+      "lng": 31.2357
+    }
+  },
+  {
+    "cityName": "Rio de Janeiro",
+    "country": "Brazil",
+    "emoji": "🇧🇷",
+    "notes": "Vibrant city with stunning natural beauty",
+    "position": {
+      "lat": -22.9068,
+      "lng": -43.1729
+    }
+  },
+  {
+    "cityName": "Singapore",
+    "country": "Singapore",
+    "emoji": "🇸🇬",
+    "notes": "Clean, modern, and incredibly efficient",
+    "position": {
+      "lat": 1.3521,
+      "lng": 103.8198
+    }
+  },
+  {
+    "cityName": "Cape Town",
+    "country": "South Africa",
+    "emoji": "🇿🇦",
+    "notes": "Stunning natural landscapes and rich culture",
+    "position": {
+      "lat": -33.9249,
+      "lng": 18.4241
+    }
+  },
+  {
+    "cityName": "Bangkok",
+    "country": "Thailand",
+    "emoji": "🇹🇭",
+    "notes": "Amazing street food and vibrant nightlife",
+    "position": {
+      "lat": 13.7563,
+      "lng": 100.5018
+    }
+  },
+  {
+    "cityName": "Dubai",
+    "country": "United Arab Emirates",
+    "emoji": "🇦🇪",
+    "notes": "Modern architecture and luxury shopping",
+    "position": {
+      "lat": 25.2048,
+      "lng": 55.2708
+    }
+  },
+  {
+    "cityName": "Vancouver",
+    "country": "Canada",
+    "emoji": "🇨🇦",
+    "notes": "Beautiful coastal city with amazing nature",
+    "position": {
+      "lat": 49.2827,
+      "lng": -123.1207
+    }
+  }
+]
