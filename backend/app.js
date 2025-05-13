@@ -4,8 +4,10 @@ import morgan from 'morgan';
 import cors from 'cors';
 import { connectDB } from './db/connect.js';
 import cityRouter from './routes/cityRoute.js';
+import userRouter from './routes/userRoute.js';
 import { notFound } from './middleware/notFound.js';
 import { errorHandler } from './middleware/errorHandler.js';
+import { authentication } from './middleware/Authentication.js';
 
 const app = express();
 
@@ -17,7 +19,9 @@ app.use(morgan('dev'));
 app.use(cors());
 
 // Routes
-app.use('/api/v1/cities', cityRouter);
+
+app.use('/api/v1/auth', userRouter);
+app.use('/api/v1/cities', authentication, cityRouter);
 app.use(notFound);
 app.use(errorHandler);
 

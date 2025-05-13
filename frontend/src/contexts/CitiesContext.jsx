@@ -22,10 +22,16 @@ function CitiesProvider({ children }) {
         setIsLoading(true);
         const res = await fetch(`${BASE_URL}/cities`);
         const data = await res.json();
+
+        if (!data.success) {
+          showToast('error', data.msg || 'Authentication failed');
+          return;
+        }
+
         setCities(data.data.cities);
-        // console.log(data.data.cities);
       } catch (error) {
-        alert('There was an error loading data..', error);
+        showToast('error', error.message);
+        console.error('There was an error loading data...', error);
       } finally {
         setIsLoading(false);
       }
@@ -39,11 +45,16 @@ function CitiesProvider({ children }) {
       setIsLoading(true);
       const res = await fetch(`${BASE_URL}/cities/${id}`);
       const data = await res.json();
+
+      if (!data.success) {
+        showToast('error', data.msg || 'Failed to load city');
+        return;
+      }
+
       setCurrentCity(data.data);
     } catch (error) {
-      showToast('error', 'There was an error loading data...');
+      showToast('error', 'There was an error loading city...');
       console.error(error);
-      alert(error);
     } finally {
       setIsLoading(false);
     }
@@ -60,6 +71,12 @@ function CitiesProvider({ children }) {
         body: JSON.stringify(newCity),
       });
       const data = await res.json();
+
+      if (!data.success) {
+        showToast('error', data.msg || 'Failed to create city');
+        return;
+      }
+
       setCities((cities) => [...cities, data.data.city]);
       showToast('success', 'City Added Successfully...');
     } catch (error) {
@@ -73,9 +90,16 @@ function CitiesProvider({ children }) {
   async function deleteCity(id) {
     try {
       setIsLoading(true);
-      await fetch(`${BASE_URL}/cities/${id}`, {
+      const res = await fetch(`${BASE_URL}/cities/${id}`, {
         method: 'DELETE',
       });
+      const data = await res.json();
+
+      if (!data.success) {
+        showToast('error', data.msg || 'Failed to delete city');
+        return;
+      }
+
       showToast('success', 'City deleted successfully.');
       setCities((cities) => cities.filter((city) => city._id !== id));
     } catch (error) {

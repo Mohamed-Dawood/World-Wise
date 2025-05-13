@@ -50,15 +50,14 @@ function Form() {
             `${MAP_URL}?latitude=${lat}&longitude=${lng}`
           );
           const data = await res.json();
-
-          if (!data.countryCode) {
+          if (!data.countryName) {
             throw new Error(
               "That doesn't seem to be a city. Click somewhere else 🙂"
             );
           }
 
           setCityName(data.locality || data.city || data.countryName || '');
-          setCountry(data.countryCode);
+          setCountry(data.countryName);
           setEmoji(convertToEmoji(data.countryCode));
         } catch (error) {
           setGeocodingError(error.message);
