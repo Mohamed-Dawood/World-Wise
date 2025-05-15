@@ -7,9 +7,9 @@ import Button from '../../components/Button/Button.jsx';
 
 export default function Register() {
   // PRE-FILL FOR DEV PURPOSES
-  const [name, setName] = useState('Mohamed');
-  const [email, setEmail] = useState('m@gmail.com');
-  const [password, setPassword] = useState('12345678');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const { register } = useAuth();
 
@@ -60,7 +60,9 @@ export default function Register() {
         </div>
 
         <div className={styles.loginLink}>
-          <p>Already have an account? <Link to="/login">Login here</Link></p>
+          <p>
+            Already have an account? <Link to="/login">Login here</Link>
+          </p>
         </div>
       </form>
     </main>
