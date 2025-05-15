@@ -24,3 +24,24 @@
   flex-direction: column;
   gap: 0.5rem;
 }
+
+.loginLink {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.loginLink p {
+  color: var(--color-light--2);
+  font-size: 1.4rem;
+}
+
+.loginLink a {
+  color: var(--color-brand--2);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.loginLink a:hover {
+  color: var(--color-brand--1);
+}

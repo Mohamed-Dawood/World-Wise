@@ -24,3 +24,24 @@
   flex-direction: column;
   gap: 0.5rem;
 }
+
+.registerLink {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.registerLink p {
+  color: var(--color-light--2);
+  font-size: 1.4rem;
+}
+
+.registerLink a {
+  color: var(--color-brand--2);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.registerLink a:hover {
+  color: var(--color-brand--1);
+}
