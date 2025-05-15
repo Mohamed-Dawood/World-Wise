@@ -8,7 +8,6 @@ import {
 
 import { BASE_URL } from '../utils/BASE_URL.js';
 import showToast from '../utils/ShowToast.js';
-import { useAuth } from './AuthContext';
 
 const CitiesContext = createContext();
 
@@ -16,24 +15,12 @@ function CitiesProvider({ children }) {
   const [cities, setCities] = useState([]);
   const [currentCity, setCurrentCity] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const { isAuthenticated } = useAuth();
 
   useEffect(function () {
-    if (!isAuthenticated) {
-      setCities([]);
-      setCurrentCity({});
-      return;
-    }
-
     async function fetchData() {
       try {
         setIsLoading(true);
-        const token = localStorage.getItem('token');
-        const res = await fetch(`${BASE_URL}/cities`, {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        });
+        const res = await fetch(`${BASE_URL}/cities`);
         const data = await res.json();
 
         if (!data.success) {
@@ -51,17 +38,12 @@ function CitiesProvider({ children }) {
     }
 
     fetchData();
-  }, [isAuthenticated]);
+  }, []);
 
   async function gitCity(id) {
     try {
       setIsLoading(true);
-      const token = localStorage.getItem('token');
-      const res = await fetch(`${BASE_URL}/cities/${id}`, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
+      const res = await fetch(`${BASE_URL}/cities/${id}`);
       const data = await res.json();
 
       if (!data.success) {
@@ -81,12 +63,10 @@ function CitiesProvider({ children }) {
   async function createCity(newCity) {
     try {
       setIsLoading(true);
-      const token = localStorage.getItem('token');
       const res = await fetch(`${BASE_URL}/cities`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(newCity),
       });
@@ -110,12 +90,8 @@ function CitiesProvider({ children }) {
   async function deleteCity(id) {
     try {
       setIsLoading(true);
-      const token = localStorage.getItem('token');
       const res = await fetch(`${BASE_URL}/cities/${id}`, {
         method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
       });
       const data = await res.json();
 

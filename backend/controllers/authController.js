@@ -15,7 +15,7 @@ export const getAllUsers = asyncWrapper(async (req, res, next) => {
     },
   });
 });
-export const signup = asyncWrapper(async (req, res, next) => {
+export const register = asyncWrapper(async (req, res, next) => {
   const user = await User.create({ ...req.body });
 
   const token = user.createJWT();
@@ -23,13 +23,16 @@ export const signup = asyncWrapper(async (req, res, next) => {
   res.status(201).json({
     success: true,
     data: {
-      user: { name: user.name },
+      // user: { id: user._id, name: user.name },
+
+      user: { id: user._id, name: user.name },
+
       token,
     },
   });
 });
 
-export const signin = asyncWrapper(async (req, res, next) => {
+export const login = asyncWrapper(async (req, res, next) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -50,5 +53,7 @@ export const signin = asyncWrapper(async (req, res, next) => {
 
   const token = user.createJWT();
 
-  res.status(200).json({ success: true, data: { name: user.name }, token });
+  res
+    .status(200)
+    .json({ success: true, data: { id: user._id, name: user.name }, token });
 });

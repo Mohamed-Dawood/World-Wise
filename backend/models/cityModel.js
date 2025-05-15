@@ -36,6 +36,11 @@ const citySchema = new mongoose.Schema(
         required: [true, 'Longitude is required.'],
       },
     },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
+    }
   },
   {
     timestamps: true,

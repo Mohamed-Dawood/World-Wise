@@ -3,7 +3,7 @@ import City from '../models/cityModel.js';
 import { asyncWrapper } from '../utils/asyncWrapper.js';
 
 export const getAllCities = asyncWrapper(async (req, res, next) => {
-  const cities = await City.find({});
+  const cities = await City.find({ user: req.user.userId });
 
   res.status(200).json({
     success: true,
@@ -15,7 +15,10 @@ export const getAllCities = asyncWrapper(async (req, res, next) => {
 });
 
 export const createCity = async (req, res, next) => {
-  const city = await City.create(req.body);
+  const city = await City.create({
+    ...req.body,
+    user: req.user.userId
+  });
 
   res.status(201).json({
     success: true,
@@ -28,7 +31,7 @@ export const createCity = async (req, res, next) => {
 export const getCity = asyncWrapper(async (req, res, next) => {
   const { id } = req.params;
 
-  const city = await City.findById(id);
+  const city = await City.findOne({ _id: id, user: req.user.userId });
 
   if (!city) {
     return next(new CustomAPIError(`No city with id : ${id}`, 404));
@@ -43,10 +46,14 @@ export const getCity = asyncWrapper(async (req, res, next) => {
 export const updateCity = asyncWrapper(async (req, res, next) => {
   const { id } = req.params;
 
-  const city = await City.findByIdAndUpdate(id, req.body, {
-    new: true,
-    runValidators: true,
-  });
+  const city = await City.findOneAndUpdate(
+    { _id: id, user: req.user.userId },
+    req.body,
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
 
   if (!city) {
     return next(new CustomAPIError(`No city with id : ${id}`, 404));
@@ -63,7 +70,7 @@ export const updateCity = asyncWrapper(async (req, res, next) => {
 export const deleteCity = asyncWrapper(async (req, res, next) => {
   const { id } = req.params;
 
-  const city = await City.findByIdAndDelete(id);
+  const city = await City.findOneAndDelete({ _id: id, user: req.user.userId });
 
   if (!city) {
     return next(new CustomAPIError(`No city with id : ${id}`, 404));

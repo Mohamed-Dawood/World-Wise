@@ -1,29 +1,40 @@
 import { useState } from 'react';
-import styles from './Login.module.css';
+import styles from './Register.module.css';
 import PageNav from '../../components/PageNav/PageNav.jsx';
 import { useAuth } from '../../contexts/AuthContext.jsx';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button.jsx';
 
-export default function Login() {
+export default function Register() {
   // PRE-FILL FOR DEV PURPOSES
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState('Mohamed');
+  const [email, setEmail] = useState('m@gmail.com');
+  const [password, setPassword] = useState('12345678');
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { register } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const success = await login(email, password);
+    const success = await register(name, email, password);
     if (success) {
       navigate('/app');
     }
   };
 
   return (
-    <main className={styles.login}>
+    <main className={styles.register}>
       <PageNav />
       <form className={styles.form} onSubmit={handleSubmit}>
+        <div className={styles.row}>
+          <label htmlFor="name">User Name</label>
+          <input
+            type="text"
+            id="name"
+            onChange={(e) => setName(e.target.value)}
+            value={name}
+          />
+        </div>
+
         <div className={styles.row}>
           <label htmlFor="email">Email address</label>
           <input
@@ -45,7 +56,7 @@ export default function Login() {
         </div>
 
         <div>
-          <Button type="primary">Login</Button>
+          <Button type="primary">Register</Button>
         </div>
       </form>
     </main>

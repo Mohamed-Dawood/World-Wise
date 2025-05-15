@@ -10,7 +10,10 @@
   align-items: center;
   gap: 4rem;
 }
-
+.nav ul li:last-of-type {
+  display: flex;
+  gap: 1rem;
+}
 .nav a:link,
 .nav a:visited {
   text-decoration: none;
@@ -31,4 +34,25 @@ a.ctaLink:visited {
   color: var(--color-dark--0);
   padding: 0.8rem 2rem;
   border-radius: 7px;
+}
+
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.welcomeText {
+  color: var(--color-light--2);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-light--2);
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.authButtons {
+  display: flex;
+  gap: 1rem;
 }

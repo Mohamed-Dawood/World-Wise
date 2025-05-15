@@ -16,7 +16,20 @@ dotenv.config();
 // Middlewares
 app.use(express.json());
 app.use(morgan('dev'));
-app.use(cors());
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      const allowed = /^http:\/\/localhost:\d+$/;
+      if (!origin || allowed.test(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('CORS not allowed'));
+      }
+    },
+    credentials: true, // only needed if you're sending cookies
+  })
+);
 
 // Routes
 
